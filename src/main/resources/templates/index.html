@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>爱分享</title>
-    <script>
-        $(function(){
-            $("#nav").load(nav.html);
-        }
-    </script>
+    <script type="text/javascript" src="${request.contextPath}/js/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${request.contextPath}/js/global.js"></script>
+    <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/global.css" />
 </head>
 <body>
+<div id="main">
+    <div id="header"></div>
+    <div id="bodyer">
+        <div id="leftNav" class="left leftNav">
+
+        </div>
+        <div id="rightCon" class="right rightCon"></div>
+    </div>
+</div>
+
 <div  id="nav"></div>
 <div id="conList"></div>
 </body>
