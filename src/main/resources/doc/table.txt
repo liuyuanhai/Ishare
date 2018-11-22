@@ -1,0 +1,12 @@
+CREATE TABLE `pub_date` (
+`id`  varchar(36) NOT NULL   ,
+`type_id` varchar(36) NULL   ,
+`title`  varchar(100) NOT NULL ,
+`content`  varchar(4000) NOT NULL ,
+`publisher`  varchar(36) NOT NULL ,
+`pub_date`  DATETIME NULL  , 
+`read_num`  int(10) NULL DEFAULT 0 ,
+`com_num`  int(10) NULL DEFAULT 0 ,
+PRIMARY KEY (`id`)
+)
+;
