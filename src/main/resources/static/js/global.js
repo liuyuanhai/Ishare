@@ -1,6 +1,12 @@
 $(function(){
     getNav(1);
     getCon(1);
+
+    $('.ybtn').on('click',function(){
+        alert("qq");
+        getNav(1);
+
+    });
 })
 
 //加载左侧导航 param userId

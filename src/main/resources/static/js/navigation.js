@@ -10,5 +10,11 @@ $(function () {
         $(this).parent().eq(0).before(_html);
 
     });
+    $('.ybtn').on('click',function(){
+        alert("qq");
+        getNav(1);
+
+    });
+
 })
 
