@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.ishare.mapper.DataTypeMapper" >
+    <resultMap id="BaseResultMap" type="com.hh.ishare.bean.DataType" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+        <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    id, type_name, publisher
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from data_type
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectBySelective" resultMap="BaseResultMap" parameterType="com.hh.ishare.bean.DataType" >
+        select
+        <include refid="Base_Column_List" />
+        from data_type
+        <where>
+            <if test="typeName != null" >
+                type_name = #{typeName,jdbcType=VARCHAR}
+            </if>
+            <if test="publisher != null" >
+                and publisher = #{publisher,jdbcType=VARCHAR}
+            </if>
+            <if test="id != null" >
+                and id != #{id,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from data_type
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.hh.ishare.bean.DataType" >
+    insert into data_type (id, type_name, publisher
+      )
+    values (#{id,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.hh.ishare.bean.DataType" >
+        <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="id">
+            select uuid() as id from dual
+        </selectKey>
+        insert into data_type
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="typeName != null" >
+                type_name,
+            </if>
+            <if test="publisher != null" >
+                publisher,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="typeName != null" >
+                #{typeName,jdbcType=VARCHAR},
+            </if>
+            <if test="publisher != null" >
+                #{publisher,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hh.ishare.bean.DataType" >
+        update data_type
+        <set >
+            <if test="typeName != null" >
+                type_name = #{typeName,jdbcType=VARCHAR},
+            </if>
+            <if test="publisher != null" >
+                publisher = #{publisher,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hh.ishare.bean.DataType" >
+    update data_type
+    set type_name = #{typeName,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

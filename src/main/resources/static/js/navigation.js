@@ -6,15 +6,30 @@ $(function () {
 
         //控制新增框数量
         debugger;
-        var _html = '<li><input type="text" class="navInput" value=""/><span class="ybtn"></span><span class="nbtn"></span></li>';
+        var _html = '<li><input type="text" class="navInput" value=""/><span class="ybtn" onclick="yesToAdd()"></span><span class="nbtn" onclick="noToAdd()"></span></li>';
         $(this).parent().eq(0).before(_html);
 
     });
-    $('.ybtn').on('click',function(){
-        alert("qq");
-        getNav(1);
 
-    });
 
 })
 
+
+function yesToAdd() {
+    var url="/leftNav/add";
+    var name=$.trim($(".navInput").val());
+    $.ajax({
+        url: url,
+        type:"POST",
+        data:{navName:name},
+        //dataType:"json" ,
+        success:function(data) {
+            alert(data);
+            getNav(1);
+        }
+    });
+}
+
+function noToAdd() {
+    getNav(1);
+}
