@@ -3,13 +3,27 @@
 <nav id="nav" class="clearfix">
     <div class="clearfix">
         <div class="nav_com">
-            <ul>
+           <!-- <ul>
                 <#list dataTypeList as dataType>
-                <li class=""><a href="">${dataType.typeName}</a></li>
+                <li class=""><a href="" data-value="1">${dataType.typeName}</a></li>
                 </#list>
-                <li class="addNav">增加分类</li>
-            </ul>
+                <li class="addNav">增加分类</li>&lt;!&ndash;添加分类与添加文章&ndash;&gt;
+            </ul>-->
 
+            <#list dataTypeList as dataType>
+            <div>
+                <a>
+                    <span class="navText">${dataType.typeName}</span>
+                    <input type="text" class="navInput hide" value="${dataType.typeName}"/>
+                    <span class="ybtn hide" onclick="editNav()"></span>
+                    <span class="nbtn hide" onclick="delNav()"></span>
+                    <input type="text" class="navId hide" value="${dataType.id}"/>
+                </a>
+            </div>
+        </#list>
+        <div class="addNav">
+            增加分类
+        </div>
         </div>
     </div>
 </nav>

@@ -28,12 +28,13 @@ public class DataTypeServiceImpl implements DataTypeService {
 
     @Override
     public int delete(DataType type) {
-        return 0;
+        return dataTypeMapper.deleteByPrimaryKey(type.getId());
     }
 
     @Override
     public int update(DataType type) {
-        return 0;
+        System.out.println(type.getId()+""+type.getTypeName());
+        return dataTypeMapper.updateByPrimaryKeySelective(type);
     }
 
     @Override

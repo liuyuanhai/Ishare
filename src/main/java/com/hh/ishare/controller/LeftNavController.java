@@ -37,4 +37,14 @@ public class LeftNavController {
         int flag= dataTypeService.add(typ);
         return flag ;
     }
+    @PostMapping("edit")
+    @ResponseBody
+    public int edit(String navName,String navId){
+        DataType typ=new DataType();
+        typ.setPublisher("1");
+        typ.setTypeName(navName);
+        typ.setId(navId);
+        return dataTypeService.update(typ);
+    }
 }
+
